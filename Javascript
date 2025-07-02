@@ -1,0 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const learnMoreBtn = document.getElementById('learnMoreBtn');
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener('click', () => {
+            alert('You clicked the "Learn More" button! This could scroll to a section or open a modal.');
+    
+            window.scrollTo({ top: document.querySelector('.features').offsetTop, behavior: 'smooth' });
+        });
+    }
+
+
+    const toggleInfoBtn = document.getElementById('toggleInfoBtn');
+    const infoText = document.getElementById('infoText');
+    let isInfoHidden = true; 
+    
+    const originalInfoText = infoText.textContent;
+    
+    const fullInfoText = "Here are some extended details about our amazing services. We offer a wide range of solutions tailored to your needs, including web development, graphic design, and digital marketing. Contact us today to learn more!";
+
+    infoText.textContent = originalInfoText;
+
+    if (toggleInfoBtn && infoText) {
+        toggleInfoBtn.addEventListener('click', () => {
+            if (isInfoHidden) {
+                infoText.textContent = fullInfoText;
+                toggleInfoBtn.textContent = 'Show Less Info';
+            } else {
+                infoText.textContent = originalInfoText;
+                toggleInfoBtn.textContent = 'Show More Info';
+            }
+            isInfoHidden = !isInfoHidden; 
+        });
+    }
+});
